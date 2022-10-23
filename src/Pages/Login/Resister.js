@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 
 
@@ -9,6 +9,7 @@ import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 const Resister = () => {
 
     const [error, set_error] = React.useState('');
+    const [accepeted, set_accepeted] = React.useState(false);
 
     const navigate = useNavigate();
     const { create_user } = React.useContext(AuthContext);
@@ -59,7 +60,7 @@ const Resister = () => {
                 <Form.Control name='password' type="password" placeholder="Password" />
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                <Form.Check type="checkbox" label="Check me out" />
+                <Form.Check type="checkbox" label={<>Accept <Link to='/terms'>Terms and Conditions</Link></>} />
             </Form.Group>
             <Button variant="primary" type="submit">
                 Register

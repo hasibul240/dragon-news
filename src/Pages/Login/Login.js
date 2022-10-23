@@ -1,12 +1,15 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 
 const Login = () => {
 
     const [error, set_error] = React.useState('');
+
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
 
     const navigate = useNavigate();
     const { sign_in } = React.useContext(AuthContext);
@@ -22,7 +25,7 @@ const Login = () => {
                 const user = result.user;
                 console.log(user);
                 set_error('');
-                navigate('/');
+                navigate(from, { replace: true });
             })
             .catch(error => {
                 console.error(error);
@@ -42,7 +45,6 @@ const Login = () => {
                 <Form.Control name='password' type="password" placeholder="Password" />
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                <Form.Check type="checkbox" label="Check me out" />
             </Form.Group>
             <Button variant="primary" type="submit">
                 Login
