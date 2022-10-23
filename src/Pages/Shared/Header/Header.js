@@ -16,9 +16,7 @@ const Header = () => {
 
     const handle_logout = () => {
         log_out()
-            .then(() => {
-                window.location.reload();
-            })
+            .then(() => {})
             .catch(error => console.error(error));
     }
 
@@ -44,7 +42,7 @@ const Header = () => {
                         </NavDropdown>
                     </Nav>
                     <Nav>
-                        <Nav className='align-items-center' href="#deets">
+                        <Nav className='align-items-center me-2' href="#deets">
                             {user?.uid ?
                                 <>
                                     <span>{user?.displayName}</span>
@@ -56,9 +54,9 @@ const Header = () => {
                                 </>
                             }
                         </Nav>
-                        <Nav.Link eventKey={2} href="#memes">
-                            {user?.photoURL ? <Image src={user.photoURL} roundedCircle width='30px' /> : <FaUserAlt />}
-                        </Nav.Link>
+                        <Link to="/profile">
+                            {user?.photoURL ? <Image src={user.photoURL} roundedCircle width='30px' /> : <FaUserAlt/>}
+                        </Link>
                     </Nav>
                     <div className='d-lg-none'>
                         <LeftSideNav />

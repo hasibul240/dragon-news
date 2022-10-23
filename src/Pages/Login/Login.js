@@ -13,7 +13,7 @@ const Login = () => {
     const from = location.state?.from?.pathname || '/';
 
     const navigate = useNavigate();
-    const { sign_in } = React.useContext(AuthContext);
+    const { sign_in, set_loading } = React.useContext(AuthContext);
 
     const handle_submit = (event) => {
         event.preventDefault();
@@ -35,7 +35,8 @@ const Login = () => {
             .catch(error => {
                 console.error(error);
                 set_error(error.message);
-            });
+            })
+        .finally(() => set_loading(false));
     }
 
     return (
