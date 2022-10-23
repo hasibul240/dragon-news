@@ -44,7 +44,7 @@ const Header = () => {
                         </NavDropdown>
                     </Nav>
                     <Nav>
-                        <Nav href="#deets">
+                        <Nav className='align-items-center' href="#deets">
                             {user?.uid ?
                                 <>
                                     <span>{user?.displayName}</span>
