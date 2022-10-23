@@ -2,7 +2,7 @@ import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import toast from 'react-hot-toast';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 
 
@@ -12,7 +12,6 @@ const Resister = () => {
     const [error, set_error] = React.useState('');
     const [chacked, set_chacked] = React.useState(false);
 
-    // const navigate = useNavigate();
     const { create_user, update_user_profile, varify_email } = React.useContext(AuthContext);
 
     const handle_submit = (event) => {
