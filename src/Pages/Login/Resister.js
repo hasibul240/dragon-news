@@ -4,6 +4,7 @@ import Form from 'react-bootstrap/Form';
 import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
+import useTitle from '../../hooks/useTitle';
 
 
 
@@ -11,7 +12,7 @@ const Resister = () => {
 
     const [error, set_error] = React.useState('');
     const [chacked, set_chacked] = React.useState(false);
-
+    useTitle('Resister');
     const { create_user, update_user_profile, varify_email } = React.useContext(AuthContext);
 
     const handle_submit = (event) => {
